@@ -19,13 +19,17 @@ public class Array {
     return data.length;
   }
 
+  public boolean isEmpty() {
+    return size == 0;
+  }
+
   public void add(int index, int e) {
     if (index < 0 || index > size) {
-      throw new IllegalArgumentException("exception: index illegal!");
+      throw new IllegalArgumentException("add failed,index is illegal.");
     }
 
     if (size == data.length) {
-      throw new IllegalArgumentException("exception: array is full!");
+      throw new IllegalArgumentException("add failed, array is fulled");
     }
 
     for (int i = size - 1; i >= index; i--) {
@@ -42,6 +46,58 @@ public class Array {
 
   public void addLast(int e) {
     add(size, e);
+  }
+
+  public int get(int index) {
+    if (index < 0 || index >=size) {
+      throw new IllegalArgumentException("index is illegal");
+    }
+
+    return data[index];
+  }
+
+  public void set(int index, int e) {
+    if (index < 0 || index >= size) {
+      throw new IllegalArgumentException("set is failed,index is illegal");
+    }
+
+    data[index] = e;
+  }
+
+  public boolean contains(int e) {
+    for (int i = 0; i < size; i++) {
+      if (data[i] == e) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  public int find(int e) {
+    for (int i = 0; i < size; i++) {
+      if (data[i] == e) {
+        return i;
+      }
+    }
+
+    return -1;
+  }
+
+  public int remove(int index) {
+    if (index < 0 || index >= size) {
+      throw new IllegalArgumentException("Remove failed,index is illegal!");
+    }
+
+    int res = data[index];
+
+    for (int i = index + 1; i < size; ++i) {
+      data[i - i] = data[i];
+    }
+
+    size--;
+
+    return res;
   }
 
   @Override

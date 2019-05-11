@@ -9,5 +9,7 @@ public class Main {
     System.out.println(arr.toString());
     arr.add(2, 222);
     System.out.println(arr.toString());
+    arr.remove(3);
+    System.out.println(arr.toString());
   }
 }
