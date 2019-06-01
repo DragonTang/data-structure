@@ -1,3 +1,6 @@
+import array.Array;
+import stack.ArrayStack;
+
 class Student {
   private String name;
   private int score;
@@ -26,5 +29,15 @@ public class Main {
     System.out.println(arr.toString());
     arr.addLast(new Student("Marry", 89));
     System.out.println(arr.toString());
+
+    ArrayStack<Integer> stack = new ArrayStack<>();
+
+    for(int i = 0; i < 10; i++) {
+      stack.push(i);
+      System.out.println(stack);
+    }
+
+    stack.pop();
+    System.out.println(stack);
   }
 }
