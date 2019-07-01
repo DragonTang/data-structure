@@ -1,5 +1,6 @@
 import array.Array;
 import stack.ArrayStack;
+import queue.ArrayQueue;
 
 class Student {
   private String name;
@@ -39,5 +40,17 @@ public class Main {
 
     stack.pop();
     System.out.println(stack);
+
+    ArrayQueue<Integer> queue = new ArrayQueue<>();
+
+    for(int i = 0; i < 10; i++) {
+      queue.enqueue(i);
+      System.out.println(queue);
+
+      if(i % 3 == 2) {
+        queue.dequeue();
+        System.out.println(queue);
+      }
+    }
   }
 }
