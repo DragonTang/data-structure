@@ -1,9 +1,10 @@
 package queue;
 
 public interface Queue<E> {
-  void enqueue(E e);
-  E dequeue();
-  E getFront();
-  int getSize();
-  boolean isEmpty();
+  public int getSize();
+  public int getCapacity();
+  public boolean isEmpty();
+  public void enqueue(E e);
+  public E dequeue() throws Exception;
+  public E getFront();
 }
