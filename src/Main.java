@@ -2,6 +2,7 @@ import array.Array;
 import stack.ArrayStack;
 import queue.ArrayQueue;
 import list.LinkList;
+import BST.BST;
 
 class Student {
   private String name;
@@ -75,5 +76,12 @@ public class Main {
     System.out.println(list.toString());
     list.update("oop", 3);
     System.out.println(list.toString());
+
+    BST<Integer> bst = new BST();
+
+    bst.add(123);
+    bst.add(111);
+    System.out.println("BST size: " + bst.getSize());
+
   }
 }
