@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "./link-list.h"
 
 // link_list -> virtual_head -> 0 -> 1 -> 2 -> 3 -> 4 -> 5
@@ -72,17 +73,55 @@ int update(void *data, int index, struct link_list *list) {
   return 1;
 }
 
-int remove_element(int index, struct link_list *list) {
+void* remove_element(int index, struct link_list *list) {
 
   if (index < 0 || index >= list -> size)
-    return -1;
+    return NULL;
   struct node *pre_next = list -> virtual_head;
 
   for (int i = 0; i < index; i++)
     pre_next = pre_next -> next;
   struct node *tmp_node = pre_next -> next -> next;
+  void *res = pre_next -> next -> data;
   free(pre_next -> next);
   pre_next -> next = tmp_node;
   list -> size--;
-  return 1;
+  return res;
+}
+
+void * remove_first_element(struct link_list *list) {
+  return remove_element(0, list);
+}
+
+void * find(int index, struct link_list *list) {
+
+  if (index < 0 || index >= list -> size)
+    return NULL;
+  struct node *pre_next = list -> virtual_head;
+
+  for (int i = 0; i < index; i++)
+    pre_next = pre_next -> next;
+
+  return pre_next -> next -> data;
+}
+
+void * find_first_element(struct link_list *list) {
+  return find(0, list);
+}
+
+int contains(void * data, struct link_list *list, int type) {
+  struct node *pre_next = list -> virtual_head;
+
+  for (int i = 0; i < list -> size; i++) {
+    pre_next = pre_next -> next;
+
+    if (type == 1) {
+      if (*(int *)pre_next -> data == *(int *)data)
+        return i;
+    } else
+        if(!strcmp((char *)pre_next -> data, (char *)data))
+          return i;
+  }
+
+  return -1;
 }

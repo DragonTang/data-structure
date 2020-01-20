@@ -23,5 +23,15 @@ int main(int argc, char **argv) {
   // show_list(list);
   // remove_element(4, list);
   show_list(str_list, 2);
+
+  printf("%d\n", *(int*)remove_element(7, num_list));
+  printf("%s\n", (char*)remove_element(3, str_list));
+  printf("%s\n", (char*)remove_first_element(str_list));
+
+  show_list(str_list, 2);
+  printf("%s\n", (char*)find(6, str_list));
+  printf("%s\n", (char*)find_first_element(str_list));
+
+  printf("%d\n", contains("google", str_list, 2));
   return 0;
 }
